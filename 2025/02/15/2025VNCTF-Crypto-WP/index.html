@@ -27,7 +27,7 @@
 <meta property="og:description" content="只写了密码部分和一道杂项，最后离比赛结束还有几十秒的时候发现自己从30掉到了31，以为与奖品无缘了，但是后面收集wp的时候，前面有两队没交wp，所以排到29了:D。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-15T08:21:29.000Z">
-<meta property="article:modified_time" content="2025-02-21T14:36:35.702Z">
+<meta property="article:modified_time" content="2025-03-07T15:09:06.388Z">
 <meta property="article:author" content="FariTree">
 <meta name="twitter:card" content="summary">
 
@@ -151,7 +151,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -215,7 +215,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-02-21 22:36:35" itemprop="dateModified" datetime="2025-02-21T22:36:35+08:00">2025-02-21</time>
+      <time title="Modified: 2025-03-07 23:09:06" itemprop="dateModified" datetime="2025-03-07T23:09:06+08:00">2025-03-07</time>
     </span>
 
   
@@ -246,19 +246,23 @@ c = (flag)^2 \mod n_i \ \ \ i \in {0, 1, 2}
 <span class="math display">\[
 X_i = (aX_{i-1} + b) \% m
 \]</span> 这里找到的是： <span class="math display">\[
+\begin{aligned}
 X_{8} = (aX_{7} + b) \% m \\
 X_{11} = (aX_{10} + b) \% m \\
 X_{12} = (aX_{15} + b) \% m \\
 X_{19} = (aX_{18} + b) \% m
+\end{aligned}
 \]</span> 所以有： <span class="math display">\[
 a = \frac{X_{8} - X_{11}}{X_{7}-X_{10}} =
 \frac{X_{11}-X_{16}}{X_{10}-X_{15}} = \frac{X_{16} -
 X_{19}}{X_{15}-X_{18}}
 \]</span> 所以: <span class="math display">\[
+\begin{aligned}
 (X_{8} - X_{11})(X_{10}-X_{15})-(X_{7}-X_{10})(X_{11}-X_{16}) \equiv
 0  \mod m \\
 (X_{11} - X_{16})(X_{15}-X_{18})-(X_{10}-X_{15})(X_{16}-X_{19}) \equiv 0
 \mod m
+\end{aligned}
 \]</span>
 上面两式的左侧都是m的倍数，那他们的最大公因数很可能就是m，得到m后再利用上式求出a，b，然后反推出seed。
 exp.sage: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> getPrime, GCD</span><br><span class="line">n=[...]</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LCG</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, seed=<span class="literal">None</span>, a=<span class="literal">None</span>, b=<span class="literal">None</span>, m=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.m = m</span><br><span class="line">        <span class="variable language_">self</span>.seed = seed</span><br><span class="line">        <span class="variable language_">self</span>.a = a</span><br><span class="line">        <span class="variable language_">self</span>.b = b</span><br><span class="line">        <span class="comment">#print(f&quot;LCG 初始化参数: seed=&#123;self.seed&#125;\n a=&#123;self.a&#125;\n b=&#123;self.b&#125;\n m=&#123;self.m&#125;&quot;)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.seed = (<span class="variable language_">self</span>.seed * <span class="variable language_">self</span>.a + <span class="variable language_">self</span>.b) % <span class="variable language_">self</span>.m</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.seed</span><br><span class="line"></span><br><span class="line">p1 = (n[<span class="number">8</span>]-n[<span class="number">11</span>])*(n[<span class="number">10</span>]-n[<span class="number">15</span>]) - (n[<span class="number">7</span>]-n[<span class="number">10</span>])*(n[<span class="number">11</span>]-n[<span class="number">16</span>])</span><br><span class="line">p2 = (n[<span class="number">11</span>]-n[<span class="number">16</span>])*(n[<span class="number">15</span>]-n[<span class="number">18</span>]) - (n[<span class="number">10</span>]-n[<span class="number">15</span>])*(n[<span class="number">16</span>]-n[<span class="number">19</span>])</span><br><span class="line">p = (GCD(p1, p2))</span><br><span class="line">a = (n[<span class="number">8</span>] - n[<span class="number">11</span>])*<span class="built_in">pow</span>(n[<span class="number">7</span>] - n[<span class="number">10</span>], -<span class="number">1</span>, p) % p</span><br><span class="line">b = (n[<span class="number">8</span>] - a*n[<span class="number">7</span>]) % p</span><br><span class="line">seed = (n[<span class="number">0</span>] - b)*<span class="built_in">pow</span>(a, -<span class="number">1</span>, p) % p</span><br><span class="line">lcg = LCG(seed, a, b, p)</span><br><span class="line">FLAG1 = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(n)):</span><br><span class="line">    <span class="keyword">if</span> n[i] == lcg.<span class="built_in">next</span>():</span><br><span class="line">        FLAG1 = FLAG1 + <span class="string">&quot;0&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        FLAG1 = FLAG1 + <span class="string">&quot;1&quot;</span></span><br><span class="line">FLAG1 = long_to_bytes(<span class="built_in">int</span>(FLAG1, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(FLAG1)</span><br><span class="line"><span class="comment"># b&#x27;VNCTF&#123;Happy_New_Year_C0ngratu1at&#x27;</span></span><br></pre></td></tr></table></figure> <strong>Part2</strong>
@@ -349,6 +353,7 @@ exp:</p>
 \]</span></p>
 <p>然后把<span class="math inline">\(\mathbf{c},
 \mathbf{A}\)</span>发送给我们，如果我们能找到<span class="math inline">\(\mathbf{s}\)</span>就能获得flag。这题关键在于我们不知道<span class="math inline">\(\mathbf{e}\)</span>，但是只知道<span class="math inline">\(\mathbf{e}\)</span>中的每个分量都是从e_L这个列表二选一得到的，所以对于<span class="math inline">\(\mathbf{A}\)</span>的每行，我们可以得到: <span class="math display">\[
+\begin{gather}
 c_i = (a_{i0}, a_{i1}, \cdots, a_{i196})
 \begin{pmatrix}
 s_0\\
@@ -364,11 +369,14 @@ s_1\\
 \vdots\\
 s_{196}\\
 \end{pmatrix} + e\_L[1]
+\end{gather}
 \]</span></p>
 <p>稍微变形得： <span class="math display">\[
+\begin{gather}
 a_{i0}s_0 + a_{i1}s_1 + \cdots + a_{i196}s_{196} + e\_L[0] - c_i = 0  
 \\ \mathrm{or}\\
 a_{i0}s_0 + a_{i1}s_1 + \cdots + a_{i196}s_{196} + e\_L[1] - c_i = 0  
+\end{gather}
 \]</span>
 虽然这两个等式不知道哪一个会成立，但是我们能得出下面这个式子一定成立:
 <span class="math display">\[
@@ -378,12 +386,14 @@ c_i)*(a_{i0}s_0 + a_{i1}s_1 + \cdots + a_{i196}s_{196} + e\_L[1] - c_i)
 \]</span>
 这个方程是二次的，含有197未知量，即使我们能获取到19700个这样的等式，想要求解他们也是很困难的，所以我们可以采取以下措施来将方程行线性化，我们直接打开上面的括号:
 <span class="math display">\[
+\begin{gather}
 a_{i0}^2s_{0}^2 + a_{i1}^2s_{1}^2 + \cdots + a_{i196}^2s_{196}^2 + \\
 2a_{i0}a_{i1}s_{0}s_{1} + 2a_{i0}a_{2}s_{i0}s_{2} + \cdots +
 2a_{i195}a_{i196}s_{195}s_{196} + \\
 a_{i0}(e\_L[0]+e\_L[1]-2c_i)s_{0} + a_{i1}(e\_L[0]+e\_L[1]-2c_i)s_{1} +
 \cdots + a_{i196}(e\_L[0]+e\_L[1]-2c_i)s_{196} \\
 = (c_i-e\_L[0])(c_i-e\_L[1])
+\end{gather}
 \]</span>
 打开后我们发现等号左边刚好19700项，所以我们可以把左边的每一项的未知量都用一个新的未知量代替：
 <span class="math display">\[
@@ -415,8 +425,8 @@ blas 替换为 openblas。</p>
             <div class="post-nav-item">
             </div>
             <div class="post-nav-item">
-                <a href="/2025/03/06/2025-GHCTF%E6%96%B0%E7%94%9F%E8%B5%9B-Crypto-WP/" rel="next" title="2025-GHCTF新生赛-Crypto-WP">
-                  2025-GHCTF新生赛-Crypto-WP <i class="fa fa-angle-right"></i>
+                <a href="/2025/03/06/2025GHCTF%E6%96%B0%E7%94%9F%E8%B5%9B-Crypto-WP/" rel="next" title="2025GHCTF新生赛-Crypto-WP">
+                  2025GHCTF新生赛-Crypto-WP <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -486,7 +496,7 @@ blas 替换为 openblas。</p>
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
