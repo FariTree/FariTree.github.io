@@ -187,7 +187,7 @@ body {
   box-sizing: border-box;
   color: var(--text-color);
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 2;
   min-height: 100%;
   position: relative;
@@ -1247,7 +1247,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #4d00f4;
+    background: #a39883;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2822,6 +2822,6 @@ header.header {
   }
 }
 p {
-  font-size: 16px; /* 根据需要调整字体大小 */
+  font-size: 20px; /* 根据需要调整字体大小 */
   line-height: 1.8; /* 根据需要调整行高 */
 }
