@@ -391,7 +391,7 @@ prefix[:] + [1], output)</strong></li>
 \]</span>
 然后将这两个向量作内积，得到的就是输出比特，要注意这里的运算是在<span class="math inline">\(GF(2)\)</span>上进行的(可以简单的理解为所有运算都要模2，保证数据只有1比特的大小)。那么新的状态可以表示为：
 <span class="math display">\[
-\mathbf{state}^{&#39;} = ( s_2, s_3, \cdots, s_{63}, \mathbf{state}
+\mathbf{state}^{&#39;} = ( s_2, s_3, \cdots, s_{64}, \mathbf{state}
 \cdot \mathbf{mask}^T )
 \]</span> 我们可以把它写作矩阵形式： <span class="math display">\[
 \mathbf{state}^{&#39;} = \mathbf{state}
