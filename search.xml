@@ -722,4 +722,13 @@ b)。这样不断二分就能得到x。</p>
         <tag>OL-attack</tag>
       </tags>
   </entry>
+  <entry>
+    <title>DownloadTest</title>
+    <url>/2025/06/08/DownloadTest/</url>
+    <content><![CDATA[<p>测试</p>
+<span id="more"></span>
+<p><a href="./DownloadTest/chal-05.py">下载一</a> <a href="./DownloadTest/数据处理.py">下载二</a></p>
+<p><img src="/2025/06/08/DownloadTest/640.png" alt="图片一"> <img src="/2025/06/08/DownloadTest/Default_Emote-Blank.png" alt="图片二"></p>
+]]></content>
+  </entry>
 </search>
