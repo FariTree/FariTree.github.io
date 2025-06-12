@@ -340,7 +340,7 @@ m\)</span> 模5一定会出现 <span class="math inline">\(\{0,1,2,3,4\}\)</span
 \]</span></p>
 <p><span class="math inline">\(\mathbf{x}\)</span>就是签名要寻找的向量，我们带入得：
 <span class="math display">\[
-\mathbf{x}^T\mathbf{P}_i\mathbf{x} =
+\mathbf{s}^T\mathbf{P}_i\mathbf{s} =
 (\mathbf{v} + \mathbf{\overline{O}}\mathbf{x})^T
 \mathbf{P}_i
 (\mathbf{v} + \mathbf{\overline{O}}\mathbf{x}) =
