@@ -575,7 +575,7 @@ SM2的加密方法，可以直接查看gmssl的python实现<a href="#ref11"><sup
 <p>由于数据库中已知明密文长度都是46字节，所以我们只拿到了预主密钥的前46字节，还需要爆破2字节。</p>
 <p>拿到预主密钥后，根据如下方法生成主密钥<a href="#ref7"><sup id="cite7">[7]</sup></a>： <img src="/2025/07/28/NepCTF2025-Crypto-WP/master-secret.png"></p>
 <p>PRF函数定义如下<a href="#ref7"><sup id="cite7">[7]</sup></a>： <img src="/2025/07/28/NepCTF2025-Crypto-WP/PRF.png"></p>
-<p>获取到主密钥后，再获取工作密钥<a href="#ref7"><sup id="cite7">[7]</sup></a>： <img src="/2025/07/28/NepCTF2025-Crypto-WP/work_secret.png">，这些密钥长度分别是32、32、16、16、16、16。</p>
+<p>获取到主密钥后，再获取工作密钥<a href="#ref7"><sup id="cite7">[7]</sup></a>： <img src="/2025/07/28/NepCTF2025-Crypto-WP/work_secret.png"> 这些密钥长度分别是32、32、16、16、16、16。</p>
 <p>在双方成功获取到工作密钥后，都会发送一个<code>Finished</code>消息，在wireshark中显示为<code>Encrypted Handshake Message</code>：
 <img src="/2025/07/28/NepCTF2025-Crypto-WP/Finished.png"></p>
 <p>我们先来看客户端发送的这个消息，长度80字节（16字节IV+cipher（16字节finished消息明文+32字节MAC+16字节的padding））<a href="#ref10"><sup id="cite10">[10]</sup></a>： <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">f1de37c49eda363496b66f93d2c8536573e9099388cdf94e3b32c04cc091cbf79c85e78a9036f5d504a37fcf16150f368f8f78bf1ce45a0e198d58b21aaf587f2b060fb603b4d51b59de367a7587e04d</span><br></pre></td></tr></table></figure></p>
