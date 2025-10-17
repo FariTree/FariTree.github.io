@@ -1247,7 +1247,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #fff1b9;
+    background: #d1e7aa;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2851,4 +2851,44 @@ header.header {
 p {
   font-size: 20px; /* 根据需要调整字体大小 */
   line-height: 1.8; /* 根据需要调整行高 */
+}
+.foldcode-details {
+  margin: 1rem 0;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 0.6rem;
+  padding: 0.2rem 0.8rem 0.6rem;
+}
+.foldcode-details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  padding: 0.4rem 0;
+}
+.foldcode-details[open] {
+  padding-bottom: 0.8rem;
+}
+.post-body .cite {
+  color: #00d4ff;
+}
+/* 参考文献：自定义标签 + 悬挂缩进（稳） */
+#references ol.refs {
+  list-style: none; /* 去掉默认 1. 2. 3. */
+  margin: 0;
+  padding: 0.5em;
+}
+#references ol.refs > li {
+  position: relative;
+  padding-left: 2em; /* 预留给标签的宽度 —— 按需调 */
+  margin: 0.25em 0;
+}
+/* 把标签放到左侧预留区，正文从 padding-left 位置开始
+   后续换行都会和正文对齐，不会跑到最左边 */
+#references ol.refs > li::before {
+  content: attr(data-label) " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.2em; /* 要与上面的 padding-left 一致 */
+  color: #00d4ff;
+  font-variant-numeric: tabular-nums; /* 数字等宽，更齐 */
 }
